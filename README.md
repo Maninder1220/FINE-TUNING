@@ -1,0 +1,29 @@
+# AWS ORGANIZATION
+
+
+
+# IAM ROLE IN AWS-ORG
+
+
+
+
+# IaC
+
+
+
+
+# CONTAINERIZATION
+
+
+
+
+
+# CICD
+
+
+
+
+
+
+
+
