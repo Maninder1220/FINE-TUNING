@@ -23,3 +23,6 @@ variable "ig_id" {}
 
 # NAT ID
 variable "nat_gateway_id" {}
+
+# NACL ID
+variable "n_acl_id" {}

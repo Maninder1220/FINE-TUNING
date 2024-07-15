@@ -40,3 +40,10 @@ module "security_group" {
   vpc_id = module.vpc.vpc_id
 }
 
+# NACL
+module "nacl" {
+  source = "../Module/nacl"
+  vpc_id = module.vpc.vpc_id
+  public_destination_cider = var.public_destination_cider
+}
+
