@@ -1,4 +1,6 @@
 # JENKINS CICD
+# START YOUR DOCKER DEMON / DOCKER DESKTOP
+
 
 # STEP ONE - Create Persistant Volume for our Jenkins
 Volume Name : Jen-Mav-Jav

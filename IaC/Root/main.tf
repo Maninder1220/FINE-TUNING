@@ -1,3 +1,5 @@
+# # # # # NETWORKING # # # # #
+
 # VPC
 module "vpc" {
   source = "../Module/vpc"
@@ -46,4 +48,17 @@ module "nacl" {
   vpc_id = module.vpc.vpc_id
   public_destination_cider = var.public_destination_cider
 }
+
+# EC2 KEY PAIR
+module "key_pair" {
+  source = "../Module/ec2_keypair"
+}
+
+# EC2 - Public Subnet
+module "ec2_instance" {
+  source = "../Module/ec2"
+  key_pair_id = module.key_pair.key_pair_id
+  public_subnet_id = module.subnets.public_subnet_id
+}
+
 
