@@ -6,24 +6,34 @@ module "vpc" {
   vpc_cider_block = var.vpc_cider_block
 }
 
+# AZ
+module "az" {
+  source = "../Module/availability_zone"
+}
+
+
+# SUBNETS
 module "subnets" {
   source = "../Module/subnets"
   vpc_id = module.vpc.vpc_id
   private_subnet = var.private_subnet
   public_subnet = var.public_subnet
+  random_az = module.az.random_az
 }
 
+# NAT GATEWAY
 module "nat_gateway" {
   source = "../Module/nat_gateway"
   public_subnet_id = module.subnets.public_subnet_id
 }
 
+# INTERNET GATEWAY
 module "internet_gateway" {
   source = "../Module/internet_gateway"
   vpc_id = module.vpc.vpc_id
 }
 
-
+# ROUTING
 module "routing" {
   source = "../Module/routing"
 
@@ -47,6 +57,8 @@ module "nacl" {
   source = "../Module/nacl"
   vpc_id = module.vpc.vpc_id
   public_destination_cider = var.public_destination_cider
+  private_subnet_id = module.subnets.private_subnet_id
+  public_subnet_id = module.subnets.public_subnet_id
 }
 
 # EC2 KEY PAIR
@@ -57,8 +69,10 @@ module "key_pair" {
 # EC2 - Public Subnet
 module "ec2_instance" {
   source = "../Module/ec2"
-  key_pair_id = module.key_pair.key_pair_id
+  public_key = module.key_pair.public_key
   public_subnet_id = module.subnets.public_subnet_id
+  sg_id = module.security_group.sg_id
+  inherit_public_subnet_az = module.subnets.inherit_az_public_subnet
 }
 
 

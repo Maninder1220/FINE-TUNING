@@ -3,7 +3,7 @@ output "key_pair_id" {
 }
 
 output "public_key" {
-  value = tls_private_key.rsa.public_key_openssh
+  value = aws_key_pair.tf_key.key_name
 }
 
 output "private_key_pem" {

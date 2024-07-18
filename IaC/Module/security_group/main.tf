@@ -8,6 +8,16 @@ resource "aws_security_group" "sg" {
 
 
 # Security Group Rules INGRESS
+resource "aws_security_group_rule" "In_icmp" {
+    type = "ingress"
+    cidr_blocks = ["0.0.0.0/0"]
+    protocol =  "icmp"
+    from_port =  -1
+    to_port =  -1
+    security_group_id = aws_security_group.sg.id
+}
+
+
 resource "aws_security_group_rule" "in_ssh" {
     type = "ingress"
     cidr_blocks = ["0.0.0.0/0"]
@@ -37,6 +47,16 @@ resource "aws_security_group_rule" "in_https" {
 
 
 # Security Group Rules EGRESS
+resource "aws_security_group_rule" "eg_icmp" {
+    type = "egress"
+    cidr_blocks = ["0.0.0.0/0"]
+    protocol =  "icmp"
+    from_port =  -1
+    to_port =  -1
+    security_group_id = aws_security_group.sg.id
+}
+
+
 resource "aws_security_group_rule" "eg_ssh" {
     type = "egress"
     cidr_blocks = ["0.0.0.0/0"]
@@ -63,6 +83,4 @@ resource "aws_security_group_rule" "eg_https" {
     to_port =  443
     security_group_id = aws_security_group.sg.id
 }
-
-
 

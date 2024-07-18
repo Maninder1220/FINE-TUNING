@@ -3,6 +3,19 @@ resource "aws_network_acl" "n_acl" {
   vpc_id = var.vpc_id
 }
 
+
+# NACL ASSOCIATION WITH SUBNETS 
+resource "aws_network_acl_association" "private_nacl" {
+  network_acl_id = aws_network_acl.n_acl.id
+  subnet_id = var.private_subnet_id
+}
+
+resource "aws_network_acl_association" "public_nacl" {
+  network_acl_id = aws_network_acl.n_acl.id
+  subnet_id = var.public_subnet_id
+}
+
+
 # INGRESS aka INBOUND
 resource "aws_network_acl_rule" "ing_n_acl_4_ssh" {
   network_acl_id = aws_network_acl.n_acl.id
@@ -37,6 +50,17 @@ resource "aws_network_acl_rule" "ing_n_acl_4_https" {
   to_port        = 443
 }
 
+resource "aws_network_acl_rule" "ing_n_acl_4_icmp" {
+  network_acl_id = aws_network_acl.n_acl.id
+  rule_number    = 400
+  egress         = false
+  protocol       = "icmp"
+  rule_action    = "allow"
+  cidr_block     = var.public_destination_cider
+  from_port      = -1
+  to_port        = -1
+}
+
 # EGRESS aka OUTBOUND
 resource "aws_network_acl_rule" "egr_n_acl_4_ssh" {
   network_acl_id = aws_network_acl.n_acl.id
@@ -69,4 +93,15 @@ resource "aws_network_acl_rule" "egr_n_acl_4_https" {
   cidr_block     = var.public_destination_cider
   from_port      = 443
   to_port        = 443
+}
+
+resource "aws_network_acl_rule" "egr_n_acl_4_icmp" {
+  network_acl_id = aws_network_acl.n_acl.id
+  rule_number    = 400
+  egress         = true
+  protocol       = "icmp"
+  rule_action    = "allow"
+  cidr_block     = var.public_destination_cider
+  from_port      = -1
+  to_port        = -1
 }
