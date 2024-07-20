@@ -1,5 +1,5 @@
 # # # # # NETWORKING # # # # #
-
+/*
 # VPC
 module "vpc" {
   source = "../Module/vpc"
@@ -60,7 +60,19 @@ module "nacl" {
   private_subnet_id = module.subnets.private_subnet_id
   public_subnet_id = module.subnets.public_subnet_id
 }
+*/
+# IAM Policy
+module "i_am_policy" {
+  source = "../Module/i_am_policy/ec2_fullaccess"
+}
 
+# IAM USER
+module "iam_ec2_user" {
+  source = "../Module/i_am_user/ec2_user"
+  ec2_full_access_policy = module.i_am_policy.ec2_full_access_policy
+}
+
+/*
 # EC2 KEY PAIR
 module "key_pair" {
   source = "../Module/ec2_keypair"
@@ -74,5 +86,9 @@ module "ec2_instance" {
   sg_id = module.security_group.sg_id
   inherit_public_subnet_az = module.subnets.inherit_az_public_subnet
 }
+
+*/
+
+
 
 
