@@ -12,8 +12,3 @@ terraform {
 provider "aws" {
   region = "ap-south-1"      # Mumbai
 }
-
-provider "aws" {
-  alias = "Organization"
-  region = "ap-south-1"
-}
