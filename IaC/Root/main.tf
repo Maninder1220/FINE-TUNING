@@ -54,15 +54,13 @@ module "security_group" {
 }
 
 /*
-# NACL
+# NACL   NEED CHANGES HERE
 module "nacl" {
   source = "../Module/nacl"
   vpc_id = module.vpc.vpc_id
-  public_destination_cider = var.public_destination_cider
   private_subnet_id = module.subnets.private_subnet_id
   public_subnet_id = module.subnets.public_subnet_id
 }
-
 */
 
 # EC2 KEY PAIR

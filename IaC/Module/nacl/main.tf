@@ -23,7 +23,7 @@ resource "aws_network_acl_rule" "ing_n_acl_4_ssh" {
   egress         = false
   protocol       = "tcp"
   rule_action    = "allow"
-  cidr_block     = var.public_destination_cider
+  cidr_block     = "0.0.0.0/0"   # TRY CHANGING THIS TYPE
   from_port      = 22
   to_port        = 22
 }
@@ -34,7 +34,7 @@ resource "aws_network_acl_rule" "ing_n_acl_4_http" {
   egress         = false
   protocol       = "tcp"
   rule_action    = "allow"
-  cidr_block     = var.public_destination_cider
+  cidr_block     = "0.0.0.0/0"
   from_port      = 80
   to_port        = 80
 }
@@ -45,7 +45,7 @@ resource "aws_network_acl_rule" "ing_n_acl_4_https" {
   egress         = false
   protocol       = "tcp"
   rule_action    = "allow"
-  cidr_block     = var.public_destination_cider
+  cidr_block     = "0.0.0.0/0"
   from_port      = 443
   to_port        = 443
 }
@@ -56,7 +56,7 @@ resource "aws_network_acl_rule" "ing_n_acl_4_icmp" {
   egress         = false
   protocol       = "icmp"
   rule_action    = "allow"
-  cidr_block     = var.public_destination_cider
+  cidr_block     = "0.0.0.0/0"
   from_port      = -1
   to_port        = -1
 }
@@ -68,7 +68,7 @@ resource "aws_network_acl_rule" "egr_n_acl_4_ssh" {
   egress         = true
   protocol       = "tcp"
   rule_action    = "allow"
-  cidr_block     = var.public_destination_cider
+  cidr_block     = "0.0.0.0/0"
   from_port      = 22
   to_port        = 22
 }
@@ -79,7 +79,7 @@ resource "aws_network_acl_rule" "egr_n_acl_4_http" {
   egress         = true
   protocol       = "tcp"
   rule_action    = "allow"
-  cidr_block     = var.public_destination_cider
+  cidr_block     = "0.0.0.0/0"
   from_port      = 80
   to_port        = 80
 }
@@ -90,7 +90,7 @@ resource "aws_network_acl_rule" "egr_n_acl_4_https" {
   egress         = true
   protocol       = "tcp"
   rule_action    = "allow"
-  cidr_block     = var.public_destination_cider
+  cidr_block     = "0.0.0.0/0"
   from_port      = 443
   to_port        = 443
 }
@@ -101,7 +101,7 @@ resource "aws_network_acl_rule" "egr_n_acl_4_icmp" {
   egress         = true
   protocol       = "icmp"
   rule_action    = "allow"
-  cidr_block     = var.public_destination_cider
+  cidr_block     = "0.0.0.0/0"
   from_port      = -1
   to_port        = -1
 }

@@ -39,9 +39,9 @@ INSTANCE
 
 
 # Directory Structure
-- TERRAFORM
+- FINE-TUNING/IaC
     - Module
-    - Root (Root Module)
+    - Root (Root Dir)
 
 
 # Project - Infrastructure
@@ -66,3 +66,5 @@ INSTANCE
                     - Elastic IP ( EIP )
 
 - S3 ( Global Service )
+
+
