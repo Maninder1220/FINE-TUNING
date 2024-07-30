@@ -17,8 +17,8 @@ Volume Name : Jen-Mav-Jav
     - docker run -it -p 8181:8080 --name Jen-Java-Mav -v Jen-Mav-Jav:/var/jenkins_home jenkins/jenkins 
     - Link : http://localhost:8181/
 
-- Accounr Credentials
+- Account Credentials
     - User Name : Admin
     - Password  : Admin@69
 
-# STEP THREE - Configure Maven
+# STEP THREE - Configure Master and Slave
