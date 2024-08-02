@@ -11,7 +11,7 @@ resource "aws_iam_user_login_profile" "credentials" {
   password_reset_required = true
 }
 
-resource "aws_iam_user_policy" "s3_policy" {
+resource "aws_iam_user_policy" "full_admin_access" {
   name = var.policy_name
   user = aws_iam_user.iam_user.name
   policy = jsonencode({

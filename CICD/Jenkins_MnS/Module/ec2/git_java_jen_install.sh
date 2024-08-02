@@ -4,45 +4,35 @@
 sudo apt update
 
 # Install Git
-sudo apt install git -y
-
-# Update package lists
-sudo apt update
+sudo apt install -y git
 
 # Install Java 
-sudo apt install openjdk-21-jdk
-
-# Update Package Lists
-sudo apt update
-
-##########################################
+sudo apt install -y openjdk-21-jdk
 
 # Install Jenkins
 
 # Add Repo Key
-sudo wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo gpg --dearmor -o /usr/share/keyrings/jenkins.
-
+sudo wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo gpg --dearmor -o /usr/share/keyrings/jenkins.gpg
 
 # Add Repo
-sudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list'
+sudo sh -c 'echo deb [signed-by=/usr/share/keyrings/jenkins.gpg] https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list'
 
-# Update Package Lists
+# Update package lists
 sudo apt update
 
-
 # Install Jenkins
-sudo apt install jenkins
+sudo apt install -y jenkins
 
-# Start n Enable Jenkins Service
+# Start and enable Jenkins service
 sudo systemctl start jenkins
 sudo systemctl enable jenkins
 
-# Check Java Version
+# Check Java version
 java -version
 
-echo "Java n Jenkins installation complete!"
+echo "Java and Jenkins installation complete!"
 
-# Verify installation
+# Verify Git installation
 git --version
 
 echo "Git installation complete!"
