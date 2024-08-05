@@ -39,7 +39,10 @@ INSTANCE
 
 
 # Directory Structure
-- FINE-TUNING/IaC
+- FINE-TUNING/IaC/IAM
+    - Module
+    - Root (Root Dir)
+- FINE-TUNING/IaC/InfraStructure
     - Module
     - Root (Root Dir)
 

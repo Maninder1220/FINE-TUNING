@@ -37,7 +37,6 @@ module "internet_gateway" {
 # ROUTING
 module "routing" {
   source = "../Module/routing"
-
   vpc_id = module.vpc.vpc_id
   private_destination_cider = var.private_destination_cider
   public_destination_cider =  var.public_destination_cider
@@ -53,7 +52,7 @@ module "security_group" {
   vpc_id = module.vpc.vpc_id
 }
 
-/*
+
 # NACL   NEED CHANGES HERE
 module "nacl" {
   source = "../Module/nacl"
@@ -61,7 +60,7 @@ module "nacl" {
   private_subnet_id = module.subnets.private_subnet_id
   public_subnet_id = module.subnets.public_subnet_id
 }
-*/
+
 
 # EC2 KEY PAIR
 module "key_pair" {

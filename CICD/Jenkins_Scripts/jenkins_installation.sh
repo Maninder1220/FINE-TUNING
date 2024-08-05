@@ -27,7 +27,7 @@ sudo apt install jenkins
 # Start n Enable Jenkins Service
 sudo systemctl start jenkins
 sudo systemctl enable jenkins
-
+sudo systemctl status jenkins
 
 # Check Java Version
 java -version

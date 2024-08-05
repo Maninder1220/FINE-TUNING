@@ -7,7 +7,7 @@ resource "tls_private_key" "rsa" {
 
 
 resource "aws_key_pair" "tf_key" {
-  key_name = "Public_CICD_Key"
+  key_name = "Public_Jen_Key"
   public_key = tls_private_key.rsa.public_key_openssh
 }
 

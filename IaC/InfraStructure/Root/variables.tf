@@ -9,7 +9,7 @@ variable "public_subnet" {}
 variable "public_destination_cider" {}
 variable "private_destination_cider" {}
 
-
+/*
 # VPC ID
 variable "vpc_id" {}
 
@@ -27,4 +27,4 @@ variable "nat_gateway_id" {}
 # NACL ID
 variable "n_acl_id" {}
 
-
+*/
