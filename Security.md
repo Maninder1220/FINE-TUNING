@@ -1,4 +1,4 @@
-Passwords : APPLIED | AWS TLS Private KEy
+Passwords : APPLIED | AWS TLS Private KEy | SSH-KEYGEN
 Implement strong and unique passwords for all accounts, including the administrator. Use a combination of letters, numbers, and special characters, and avoid sharing accounts.
 
 Updates :
@@ -25,7 +25,7 @@ Limit superuser or root access. Implement a security plan for physical access to
 Separation :
 Keep database servers separate from application servers. Hosting both on the same server is considered a single point of failure.
 
-VPNs : APPLIED
+VPNs : 
 Use VPNs and private networks to provide a secure channel for accessing the enterprise network.
 
 Software updates :

@@ -23,5 +23,5 @@ resource "aws_instance" "jenkins_server" {
   key_name = var.public_key                         
   vpc_security_group_ids = [ var.sg_id ]            
   subnet_id = var.public_subnet_id
-  user_data = filebase64("${path.module}/jenkins_installation.sh.b64")      # CHECK IF INSTALLED
+  user_data = filebase64("${path.module}/jenkins_Slave_Installation.sh")      # CHECK IF INSTALLED
 }
