@@ -13,5 +13,5 @@ Using Terraform for creating
 
 # Observability and Monitoring
 - Grafana Setup
-- ELK Setup
+- LogStash Setup
 
