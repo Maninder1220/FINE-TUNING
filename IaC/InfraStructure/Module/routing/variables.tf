@@ -16,3 +16,10 @@ variable "nat_gateway_id" {}
 
 variable "private_destination_cider" {}  # Private
 variable "public_destination_cider" {}   # Public
+
+
+# TAG
+variable "belongs_to" {
+   type = string
+   default = "IaC_Networking"
+  }

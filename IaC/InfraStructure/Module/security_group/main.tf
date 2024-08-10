@@ -4,6 +4,10 @@ resource "aws_security_group" "sg" {
   vpc_id = var.vpc_id
   name = "Channeling Traffic"
   description = "This security group allow inbound and outbound traffic for ssh, http and https on port 22 , 80 and 443 respectively."
+
+  tags = {
+    Name = "${var.belongs_to}-Security-Group"
+  }
 }
 
 

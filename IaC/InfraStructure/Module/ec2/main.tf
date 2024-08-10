@@ -24,4 +24,9 @@ resource "aws_instance" "jenkins_server" {
   vpc_security_group_ids = [ var.sg_id ]            
   subnet_id = var.public_subnet_id
   user_data = file("${path.module}/git_install.sh")      # CHECK IF INSTALLED
+
+  tags = {
+    Name = "${var.belongs_to}-EC2"
+  }
+
 }

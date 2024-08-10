@@ -1,6 +1,11 @@
 # # # # # NACL # # # # #
 resource "aws_network_acl" "n_acl" {
   vpc_id = var.vpc_id
+
+  tags = {
+    Name = "${var.belongs_to}-NACL"
+  }
+
 }
 
 
