@@ -43,4 +43,5 @@ STEPS TO SETUP
     - Credential : Kind - SSH Username with private key
                    Username - root    <--- as we are using super user
                    Enter Private SSH Key
+    - Host Key Verification Strategy : Non Verifying Strategy
 - Most IMP Part add public key to "authorized_keys"
