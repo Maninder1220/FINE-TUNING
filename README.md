@@ -2,6 +2,7 @@
 Using Terraform for creating
 - IAM user
 - Terraform AWS Network Infrastructure
+- 3T Infra
 
 # CONTAINERIZATION | docker
 - Doc-Java
@@ -9,7 +10,12 @@ Using Terraform for creating
 - MultiStage-Doc-Api
 
 # CICD
+- AWS-CICD-IaC
 - Jenkins Master n Slave
+- Jenkins Scripts
+
+# ORCHESTRATION
+- IaC-Fargate
 
 # Observability and Monitoring
 - Grafana Setup
