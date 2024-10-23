@@ -1,4 +1,4 @@
-# TF-ECS-FARGATE | Status : Completed
+# TF-ORC-FARGATE | Status : Completed
 
 # AIM
 Design the IaC (Terraform, Aws ECS/Fargate), CD pipeline using GitHub Actions.
