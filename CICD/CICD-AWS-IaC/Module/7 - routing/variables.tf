@@ -21,5 +21,5 @@ variable "public_destination_cider" {}   # Public
 # TAG
 variable "belongs_to" {
    type = string
-   default = "Mahity"
+   default = "LIVE"
   }

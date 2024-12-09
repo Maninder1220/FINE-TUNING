@@ -11,5 +11,5 @@ variable "instance_profile_name" {}
 # TAG
 variable "belongs_to" {
    type = string
-   default = "Mahity"
+   default = "LIVE"
   }

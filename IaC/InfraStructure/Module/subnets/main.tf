@@ -6,7 +6,7 @@ resource "aws_subnet" "private_subnet" {
   vpc_id = var.vpc_id
   cidr_block = var.private_subnet
   availability_zone = var.random_az
-  map_public_ip_on_launch = true
+  map_public_ip_on_launch = false
 
 tags = {
     Name = "${var.belongs_to}-Private-Subnet"

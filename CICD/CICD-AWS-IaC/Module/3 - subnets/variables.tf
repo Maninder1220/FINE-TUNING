@@ -13,5 +13,5 @@ variable "selected_azs" {}
 # TAG
 variable "belongs_to" {
    type = string
-   default = "Mahity"
+   default = "LIVE"
   }
