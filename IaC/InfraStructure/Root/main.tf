@@ -21,11 +21,13 @@ module "subnets" {
   random_az = module.az.random_az
 }
 
+
 # NAT GATEWAY
 module "nat_gateway" {
   source = "../Module/nat_gateway"
   public_subnet_id = module.subnets.public_subnet_id
 }
+
 
 
 # INTERNET GATEWAY
@@ -67,13 +69,22 @@ module "key_pair" {
   source = "../Module/ec2_keypair"
 }
 
-# EC2 - Public Subnet
+/*
+# VPC ENDPOINT FOR EC2
+module "vpc_endpoint" {
+  source = "../Module/endpoint"
+  vpc_id = module.vpc.vpc_id
+  private_subnet_id = module.subnets.private_subnet_id
+  sg_id = module.security_group.sg_id
+  region = var.region
+}
+*/
+
+# EC2 INSTANCE
 module "ec2_instance" {
   source = "../Module/ec2"
   public_key = module.key_pair.public_key
   public_subnet_id = module.subnets.public_subnet_id
   sg_id = module.security_group.sg_id
+  private_subnet_id = module.subnets.private_subnet_id
 }
-
-
-

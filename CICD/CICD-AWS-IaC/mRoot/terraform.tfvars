@@ -2,30 +2,35 @@
 vpc_cider_block = "10.0.0.0/16"
 
 # SUBNET CIDR
-private_subnet_cidr = "10.0.1.0/24"
 public_subnet_cidr = "10.0.2.0/24"
 
 # CIDR FOR NAT ROUTING
 public_destination_cider = "0.0.0.0/0"
-private_destination_cider = "0.0.0.0/0"
 
 # CIDR ROLE NAME
-cicd_role_name = "live-cicd-role"
-
-# CODE COMMIT REPO NAME
-repo-one-name = "live-repo-one"
+cicd_role_name = "we3-c02-cicd-role"
 
 # CODE DEPLOY APP NAME
-code_deploy_app_name = "live-code-deploy-app"
+code_deploy_app_name = "we3-c02-code-deploy-app"
+
+code_deploy_destroy_app_name = "we3-c02-code-deploy-destroy-app"
 
 # CODE DEPLOY GROUP NAME
-deployment_group_one = "live-deployment-group-one"
+deployment_group_one = "we3-c02-deployment-group-one"
 
 # CODE PIPELINE NAME
-pipeline_name = "live-pipeline"
+pipeline_name = "we3-c02-pipeline"
 
-# CODE PIPELINE TRIGGER NAME
-cc_trigger_codepipeline = "live-code-commit-trigger"
+pipeline_destroy_name = "we3-c02-destroy-pipeline"
 
 # INSTANCE PROFILE NAME
-cicd_instance_profile_name = "live-cicd-instance-profile"
+cicd_instance_profile_name = "we3-c02-cicd-instance-profile"
+
+# CODE BUILD
+github_repository_name = "Maninder1220/WE3-C02-IaC"
+
+# Github Token
+gh_token = "git-token-here"
+
+# GITHUB PUSH TRIGGER
+github-push-trigger = "github-push-trigger"

@@ -22,6 +22,8 @@ resource "aws_network_acl_association" "public_nacl" {
 
 
 # INGRESS aka INBOUND
+
+# ALL TRAFFIC
 resource "aws_network_acl_rule" "ing_n_acl_4_all_in" {
   network_acl_id = aws_network_acl.n_acl.id
   rule_number    = 100
@@ -33,6 +35,7 @@ resource "aws_network_acl_rule" "ing_n_acl_4_all_in" {
   to_port        = -1
 }
 
+# SSH
 resource "aws_network_acl_rule" "ing_n_acl_4_ssh" {
   network_acl_id = aws_network_acl.n_acl.id
   rule_number    = 200
@@ -44,6 +47,7 @@ resource "aws_network_acl_rule" "ing_n_acl_4_ssh" {
   to_port        = 22
 }
 
+# HTTP
 resource "aws_network_acl_rule" "ing_n_acl_4_http" {
   network_acl_id = aws_network_acl.n_acl.id
   rule_number    = 300
@@ -55,6 +59,7 @@ resource "aws_network_acl_rule" "ing_n_acl_4_http" {
   to_port        = 80
 }
 
+# HTTPS
 resource "aws_network_acl_rule" "ing_n_acl_4_https" {
   network_acl_id = aws_network_acl.n_acl.id
   rule_number    = 400
@@ -66,6 +71,7 @@ resource "aws_network_acl_rule" "ing_n_acl_4_https" {
   to_port        = 443
 }
 
+# ICMP
 resource "aws_network_acl_rule" "ing_n_acl_4_icmp" {
   network_acl_id = aws_network_acl.n_acl.id
   rule_number    = 500
@@ -77,7 +83,21 @@ resource "aws_network_acl_rule" "ing_n_acl_4_icmp" {
   to_port        = -1
 }
 
+# MySQL
+resource "aws_network_acl_rule" "ing_n_acl_mysql" {
+  network_acl_id = aws_network_acl.n_acl.id
+  rule_number    = 600  
+  egress         = false
+  protocol       = "tcp"  
+  rule_action    = "allow"
+  cidr_block     = "10.0.0.0/16"  
+  from_port      = 3306  # MySQL default port
+  to_port        = 3306  # MySQL default port
+}
+
 # EGRESS aka OUTBOUND
+
+# ALL TRAFFIC
 resource "aws_network_acl_rule" "ing_n_acl_4_all_out" {
   network_acl_id = aws_network_acl.n_acl.id
   rule_number    = 100
@@ -89,6 +109,7 @@ resource "aws_network_acl_rule" "ing_n_acl_4_all_out" {
   to_port        = -1
 }
 
+# SSH
 resource "aws_network_acl_rule" "egr_n_acl_4_ssh" {
   network_acl_id = aws_network_acl.n_acl.id
   rule_number    = 200
@@ -100,6 +121,8 @@ resource "aws_network_acl_rule" "egr_n_acl_4_ssh" {
   to_port        = 22
 }
 
+
+# HTTP
 resource "aws_network_acl_rule" "egr_n_acl_4_http" {
   network_acl_id = aws_network_acl.n_acl.id
   rule_number    = 300
@@ -111,6 +134,7 @@ resource "aws_network_acl_rule" "egr_n_acl_4_http" {
   to_port        = 80
 }
 
+# HTTPS
 resource "aws_network_acl_rule" "egr_n_acl_4_https" {
   network_acl_id = aws_network_acl.n_acl.id
   rule_number    = 400
@@ -122,6 +146,7 @@ resource "aws_network_acl_rule" "egr_n_acl_4_https" {
   to_port        = 443
 }
 
+# ICMP
 resource "aws_network_acl_rule" "egr_n_acl_4_icmp" {
   network_acl_id = aws_network_acl.n_acl.id
   rule_number    = 500
@@ -131,4 +156,16 @@ resource "aws_network_acl_rule" "egr_n_acl_4_icmp" {
   cidr_block     = "0.0.0.0/0"
   from_port      = -1
   to_port        = -1
+}
+
+# MySQL
+resource "aws_network_acl_rule" "eg_n_acl_mysql" {
+  network_acl_id = aws_network_acl.n_acl.id
+  rule_number    = 600  # Ensure uniqueness
+  egress         = true
+  protocol       = "tcp"
+  rule_action    = "allow"
+  cidr_block     = "10.0.0.0/16"  # Adjust as needed
+  from_port      = 3306
+  to_port        = 3306
 }

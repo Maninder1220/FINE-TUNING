@@ -7,14 +7,14 @@ resource "tls_private_key" "rsa" {
 
 
 resource "aws_key_pair" "tf_key" {
-  key_name = "Public_ossh_Key"
+  key_name = "micro_Public_ossh_Key"
   public_key = tls_private_key.rsa.public_key_openssh
 }
 
 
 
 resource "local_file" "tf_key" {
-  filename = "Private_pem_Key.pem"
+  filename = "micro_Private_pem_Key.pem"
   content = tls_private_key.rsa.private_key_pem
   file_permission = "0600"
 }

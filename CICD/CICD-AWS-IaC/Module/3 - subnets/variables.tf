@@ -1,5 +1,4 @@
 # SUBNET
-variable "private_subnet_cidr" {}
 variable "public_subnet_cidr" {}
 
 # VPC
@@ -13,5 +12,5 @@ variable "selected_azs" {}
 # TAG
 variable "belongs_to" {
    type = string
-   default = "LIVE"
+   default = "WE3-CO2"
   }

@@ -1,0 +1,54 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "Starting install phase..."
+      - echo "Installing dependencies..."
+      - apt-get install -y unzip wget curl  # Installing tools for Terraform
+      - echo "Installing Terraform..."
+      - TERRAFORM_VERSION="1.10.5"  # Specify the version you want to install
+      - wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+      - unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+      - mv terraform /usr/local/bin/
+      - rm terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+      - echo "Installing TFLint..."
+      - curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
+      - echo "Installing TFLint Complete..."
+
+  pre_build:
+    commands:
+      - echo "Starting pre-build phase..."
+      - cd ~
+      - git clone https://github.com/Maninder1220/WE3-C02-IaC.git
+      - pwd
+      - cd WE3-C02-IaC/Root
+      - terraform init  # Downloading and configuring provider plugins
+      - echo "Pre-build phase complete."
+
+  build:
+    commands:
+      - echo "Starting build phase..."
+      - terraform validate || { echo "Validation failed!"; exit 1; }
+      - tflint || { echo "Linting failed!"; exit 1; }
+      - terraform plan -out=tfplan  # Creating an execution plan for review
+      - echo "Build phase complete."
+      - pwd
+
+  post_build:
+    commands:
+      - echo "Validation and linting complete."
+      # terraform apply -auto-approve tfplan  # Deploying infrastructure
+      # echo "Terraform apply complete."
+      # echo "Post-build phase complete."
+      - pwd
+      # echo "Starting destroying phase..."
+      # terraform init
+      # terraform destroy -auto-approve  # Destroying all resources
+      # echo "Terraform destroy complete."
+      # echo "Destroy phase complete."
+      
+
+artifacts:
+  files:
+    - '**/*'

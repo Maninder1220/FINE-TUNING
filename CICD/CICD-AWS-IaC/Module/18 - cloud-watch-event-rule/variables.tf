@@ -1,0 +1,1 @@
+variable "github-push-trigger" {}

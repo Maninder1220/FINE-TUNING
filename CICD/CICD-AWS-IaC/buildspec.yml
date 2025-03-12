@@ -1,0 +1,63 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "Starting install phase..."
+      - echo "Installing dependencies..."
+      - apt install -y unzip wget curl  # Installing required tools for Terraform
+      - echo "Installing Terraform..."
+      - TERRAFORM_VERSION="1.10.5"  # Specify the version you want to install
+      - wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+      - unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+      - mv terraform /usr/local/bin/
+      - rm terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+      - echo "Installing TFLint..."
+      - TFLINT_VERSION="0.55.0"  # Specify the version you want to install
+      - wget https://github.com/terraform-linters/tflint/releases/download/v${TFLINT_VERSION}/tflint-linux-amd64.zip
+      - unzip tflint-linux-amd64.zip
+      - mv tflint /usr/local/bin/
+      - rm tflint-linux-amd64.zip
+
+  pre_build:
+    commands:
+      - echo "Starting pre-build phase..."
+      - echo "Initializing Terraform..."
+      - terraform init  # Downloading and configuring provider plugins
+      - echo "Pre-build phase complete."
+
+  build:
+    commands:
+      - echo "Starting build phase..."
+      - echo "Validating Terraform configuration..."
+      - terraform validate  # Checking for syntax errors or misconfigurations
+      - echo "Linting Terraform code with TFLint..."
+      - tflint  # Running linting checks to ensure best practices
+      - echo "Generating Terraform plan..."
+      - terraform plan -out=tfplan  # Creating an execution plan for review
+      - echo "Build phase complete."
+
+  post_build:
+    commands:
+      - echo "Starting post-build phase..."
+      - echo "Applying Terraform changes..."
+      - terraform apply -auto-approve tfplan  # Deploying infrastructure
+      - echo "Terraform apply complete."
+      - echo "Post-build phase complete."
+
+reports:
+  terraform_reports:
+    files:
+      - tfplan  # Including the Terraform plan as part of the build report
+    base-directory: .  # Base directory where reports are stored
+
+artifacts:
+  files:
+    - tfplan  # Storing Terraform plan for later use
+    - tflint.log  # Storing linting logs for debugging
+    - *.tfstate  # Storing state files if required for debugging
+
+cache:
+  paths:
+    - /root/.terraform  # Caching Terraform modules and provider plugins
+    - /root/.tflint  # Caching TFLint configuration for faster subsequent builds

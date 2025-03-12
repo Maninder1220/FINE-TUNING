@@ -1,1 +1,0 @@
-variable "cc_trigger_codepipeline" {}

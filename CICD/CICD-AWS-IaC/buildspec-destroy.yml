@@ -1,0 +1,28 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "Starting install phase..."
+
+  pre_build:
+    commands:
+      - echo "Starting pre-build phase..."
+      - echo "Initializing Terraform..."
+      - terraform init  # Downloading and configuring provider plugins
+      - echo "Pre-build phase complete."
+
+  build:
+    commands:
+      - echo "Starting build phase..."
+      - echo "Generating Terraform plan..."
+      - terraform plan -out=tfplan  # Creating an execution plan for review
+      - echo "Build phase complete."
+
+  post_build:
+    commands:
+      - echo "Starting post-build phase..."
+      - echo "Applying Terraform changes..."
+      - terraform destroy -auto-approve tfplan  # Destroying infrastructure
+      - echo "Terraform destroy complete."
+      - echo "Post-build phase complete."

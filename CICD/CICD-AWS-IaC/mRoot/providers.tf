@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     aws = {
-        version = "~>5.0"
+        version = ">=5.0.0"
         source = "hashicorp/aws"
     }
   }
@@ -9,4 +9,5 @@ terraform {
 
 provider "aws" {
   region = "ap-south-1"      # Mumbai
+  profile = "Devops-User"
 }

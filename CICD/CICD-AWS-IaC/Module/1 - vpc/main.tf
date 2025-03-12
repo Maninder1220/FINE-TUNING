@@ -6,4 +6,6 @@ resource "aws_vpc" "vpc" {
     Name = "${var.belongs_to}-vpc"
   }
 
+    depends_on = [ var.codebuld_project_bucket_arti_cach ]
+
 }
