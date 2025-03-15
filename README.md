@@ -1,8 +1,7 @@
 # IaC | aws.tf 
 Using Terraform for creating
 - IAM user
-- Terraform AWS Network Infrastructure
-- 3T Infra (NOT COMPLETE)
+- Terraform AWS Network Infrastructure with Mono and Micro
 
 # CONTAINERIZATION | docker
 - Doc-Java
